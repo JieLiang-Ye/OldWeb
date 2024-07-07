@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+  <!-- 撰寫SQL語法 -->
+  <!-- add(Member m) -->
+ <insert id="add" parameterType="model.Member">
+ 	insert into member(name,username,password,address,phone) 
+ 	values(#{name},#{username},#{password},#{address},#{phone})
+ </insert>
+ 
+ <!-- List<Member> selectAll() -->
+ <select id="selectAll" resultType="model.Member">
+ 
+ select * from Member
+ </select>
+ <!-- List<Member> selectByid(int id) -->
+ <select id="selectById" resultType="model.Member" parameterType="Integer">
+ 	select *  from member where id=#{id}
+ </select>
+ 
+ 
+ <!-- void update(Member m) -->
+ <update id="update"  parameterType="model.Member">
+  		update member set password=#{password},name=#{name} where id=#{id}
+  	</update>
+  	
+  	<!-- void delete(int id) -->
+  	
+  	<delete id="delete" parameterType="Integer">
+  		delete from member where id=#{id}
+  	</delete>
+</mapper>
